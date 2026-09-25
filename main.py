@@ -31,17 +31,20 @@ root = tk.Tk()
 root.title("Naptári információk")
 root.geometry("350x300")
 
-tk.Label(root, text="Év:").pack()
-ev_mezo = tk.Entry(root)
+app = tk.Frame(root)
+app.pack()
+
+tk.Label(app, text="Év:").pack()
+ev_mezo = tk.Entry(app)
 ev_mezo.pack()
 
-tk.Label(root, text="Hónap:").pack()
-honap_mezo = tk.Entry(root)
+tk.Label(app, text="Hónap:").pack()
+honap_mezo = tk.Entry(app)
 honap_mezo.pack()
 
-tk.Button(root, text="Lekérdezés", command=lekerdezes).pack(pady=15)
+tk.Button(app, text="Lekérdezés", command=lekerdezes).pack(pady=15)
 
-eredmeny = tk.Label(root, text="")
+eredmeny = tk.Label(app, text="")
 eredmeny.pack()
 
 root.mainloop()
