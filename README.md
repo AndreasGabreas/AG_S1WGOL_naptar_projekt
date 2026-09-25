@@ -3,6 +3,7 @@
 ## Hallgató
 
 Andrási Gábor
+S1WGOL
 
 ## Feladat leírása
 
