@@ -36,3 +36,20 @@ class AGNaptar:
         napok = ("hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat", "vasárnap")
         nap_index = calendar.weekday(self.ev, self.honap, self.nap)
         return napok[nap_index]
+
+    def nevnap(self):
+        keresett_datum = f"{self.honap:02d}-{self.nap:02d}"
+
+        with open("nevnapok.csv", "r", encoding="utf-8-sig") as fajl:
+            for sor in fajl:
+                sor = sor.strip()
+
+                if not sor:
+                    continue
+
+                datum, nevek = sor.split(";", 1)
+
+                if datum == keresett_datum:
+                    return nevek.replace(",", ", ")
+
+        return "Nincs adat"

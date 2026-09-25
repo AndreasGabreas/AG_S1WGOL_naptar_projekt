@@ -28,7 +28,8 @@ def lekerdezes():
             text=f"Szökőév: {naptar.szokoev()}\n"
                  f"Napok száma: {naptar.napok_szama()}\n"
                  f"Hónap első napja: {naptar.elso_nap()}\n"
-                 f"A megadott dátum napja: {naptar.datum_napja()}"
+                 f"A megadott dátum napja: {naptar.datum_napja()}\n"
+                 f"Névnap: {naptar.nevnap()}"
         )
 
     except ValueError:
