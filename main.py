@@ -1,10 +1,47 @@
+import tkinter as tk
 from AG_naptar import AGNaptar
 
-naptar = AGNaptar(2026, 9)
+def lekerdezes():
+    try:
+        ev = int(ev_mezo.get())
+        honap = int(honap_mezo.get())
 
-print("Év:", naptar.ev)
-print("Hónap:", naptar.honap)
-print("Érvényes hónap:", naptar.AG_ervenyes_honap())
-print("Szökőév:", naptar.szokoev())
-print("Napok száma:", naptar.napok_szama())
-print("Első nap:", naptar.elso_nap())
+        naptar = AGNaptar(ev, honap)
+
+        ev_jo, honap_jo = naptar.AG_ervenyes_adatok()
+
+        if not ev_jo:
+            eredmeny.config(text="Hibás év!\nAz év pozitív szám legyen.")
+            return
+
+        if not honap_jo:
+            eredmeny.config(text="Hibás hónap!\nA hónap 1 és 12 közötti szám legyen.")
+            return
+
+        eredmeny.config(
+            text=f"Szökőév: {naptar.szokoev()}\n"
+                 f"Napok száma: {naptar.napok_szama()}\n"
+                 f"Első nap: {naptar.elso_nap()}"
+        )
+
+    except ValueError:
+        eredmeny.config(text="Hibás adat!\nAz év és a hónap szám legyen.")
+
+root = tk.Tk()
+root.title("Naptári információk")
+root.geometry("350x300")
+
+tk.Label(root, text="Év:").pack()
+ev_mezo = tk.Entry(root)
+ev_mezo.pack()
+
+tk.Label(root, text="Hónap:").pack()
+honap_mezo = tk.Entry(root)
+honap_mezo.pack()
+
+tk.Button(root, text="Lekérdezés", command=lekerdezes).pack(pady=15)
+
+eredmeny = tk.Label(root, text="")
+eredmeny.pack()
+
+root.mainloop()

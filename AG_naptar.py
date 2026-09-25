@@ -1,15 +1,16 @@
 import calendar
 
 def AG_datum_ellenorzes(ev, honap):
-    return 1 <= honap <= 12
+    return ev > 0, 1 <= honap <= 12
 
 class AGNaptar:
     def __init__(self, ev, honap):
         self.ev = ev
         self.honap = honap
 
-    def AG_ervenyes_honap(self):
+    def AG_ervenyes_adatok(self):
         return AG_datum_ellenorzes(self.ev, self.honap)
+
     def szokoev(self):
         return calendar.isleap(self.ev)
 
