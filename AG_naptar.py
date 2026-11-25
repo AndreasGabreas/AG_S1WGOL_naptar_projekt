@@ -1,4 +1,5 @@
 import calendar
+from pathlib import Path
 
 def AG_datum_ellenorzes(ev, honap, nap):
     ev_jo = ev > 0
@@ -40,7 +41,8 @@ class AGNaptar:
     def nevnap(self):
         keresett_datum = f"{self.honap:02d}-{self.nap:02d}"
 
-        with open("nevnapok.csv", "r", encoding="utf-8-sig") as fajl:
+        fajl_utvonal = Path(__file__).resolve().parent / "nevnapok.csv"
+        with fajl_utvonal.open("r", encoding="utf-8-sig") as fajl:
             for sor in fajl:
                 sor = sor.strip()
 
